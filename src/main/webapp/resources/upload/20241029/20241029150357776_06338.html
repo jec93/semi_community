@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/jquery/html/resuorce/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <h1>jQuery 메소드</h1>
+
+    <hr>
+
+    <h3>show(), hide(), toggle()</h3>
+    <p>
+        show() : 화면에서 요소가 보여지도록
+        hide() : 화면에서 요소가 사라지도록
+        toggle() : show() -> hide() , hide() -> show() <br>
+    </p>
+
+    <button id="showBtn">show 버튼</button>
+    <button id="hideBtn">hide 버튼</button>
+    <button id="toggleBtn">toggle 버튼</button>
+
+    <div id="area1" style="width: 300px; height: 300px; background-color: red;">
+
+    </div>
+
+    <script>
+        $(function(){
+            //show버튼
+            $('#showBtn').click(function(){
+                //display 속성의 값을 block처리
+                //3000ms : 3초에 걸쳐 요소를 display block처리
+                $('#area1').show(3000);
+            });
+
+            //hide 버튼
+            $('#hideBtn').click(function(){
+                //display 속성의 값을 none처리
+                //3000ms : 3초에 걸쳐 요소를 display none 처리
+                $('#area1').hide(3000);
+            });
+            
+            //toggle 버튼
+            $('#toggleBtn').click(function(){
+                $('#area1').toggle(3000);
+            });
+        });
+
+    </script>
+
+    <br><br>
+
+    <h3>fadeIn(), fadeOut(), fadeToggle()</h3>
+    <p>
+        선택된 요소의 투명도를 조절하여 화면에 보여지게 하거나, 화면에서 사라지게 하는 메소드
+    </p>
+
+    <button id="fadeInBtn"">fadeIn 버튼</button>
+    <button id="fadeOutBtn">fadeOut 버튼</button>
+    <button id="fadeToggleBtn">fadeToggle 버튼</button>
+
+    <br><br>
+
+    <div id="area2" style="width: 300px; height: 300px; background-color: blue;"></div>
+
+    <script>
+        $(function(){
+            //화면에 보여주기 위한 메소드 (투명도 조절)
+            $('#fadeInBtn').click(function(){
+                $('#area2').fadeIn(3000);
+            });
+            //화면에서 숨겨주기 위한 메소드 (투명도 조절)
+            $('#fadeOutBtn').click(function(){
+                $('#area2').fadeOut(3000);
+            });
+
+            //fadein() < --- > fadeout()
+            $('#fadeToggleBtn').click(function(){
+                $('#area2').fadeToggle(3000);
+            });
+        });
+    </script>
+</body>
+</html>

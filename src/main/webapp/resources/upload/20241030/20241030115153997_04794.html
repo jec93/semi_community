@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- jquery 사용을 위한 파일 로드-->
+    <script src="html/resuorce/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <h1>기본 선택자를 이용해서 html 요소 선택</h1>
+
+    <hr>
+
+    <h3>* 아이디 선택자</h3>
+    <p>특정 고유한 아이디값을 가진 요소 하나만 선택할 때</p>
+    
+    <h1 id="id1">아이디 선택자 테스트1</h1>
+    <h2 id="id2">아이디 선택자 테스트2</h2>
+
+    <script>
+        //DOM 요소 모드 로드되고 난 이후에 실행.
+        $(function(){
+            //기존 js 방식의 요소 선택
+            let jsEl1 = document.getElementById("id1");
+            jsEl1.style.color = "red";
+            jsEl1.innerHTML = "h1 내부 값 변경";
+
+            //jQuery 방식의 요소 선택
+            $('#id2').css('color', 'blue'); // id가 "id2"인, 요소에 css 스타일 적용
+            $('#id2').html('h2 내부 값 변경'); // id가 "id2"인 요소의 내부 컨텐츠 변경(innerHTML과 관련된 기능 수행하는 메소드 == html())
+            //text() : innerText와 관련된 기능 수행하는 메소드
+        });
+    </script>
+
+    <h3>*태그 선택자</h3>
+
+    <p>Java</p>
+    <p>Oracle</p>
+    <p>HTML</p>
+
+    <h5>CSS</h5>
+    <h5>JavaScript</h5>
+    <h5>Jquery</h5>
+
+    <script>
+        //DOM요소가 모두 로드되고 난 뒤에 실행되는 함수
+        $(document).ready(function(){
+            //기존 JS 방식의 요소 선택
+            let pArr = document.getElementsByTagName("p"); //배열
+            for(let i=0; i<pArr.length; i++){
+                pArr[i].style.color = "orange";
+                pArr[i].onclick = function(e){
+                    console.log('js로 선택한 p 요소 클릭');
+                };
+            }
+
+            //jQuery 방식의 요소 선택
+            $('h5').css('color', 'blue'); //태그명이 h5인 태그'들'에 스타일 지정
+            $('h5').click(function(){
+                console.log('jquery로 선택한 h5 요소 클릭');
+            });
+
+            //여러 종류의 요소 선택
+            $('#id2, h5, p').css('backgroundColor', 'yellow');
+        });
+    </script>
+
+    <h3>*클래스 선택자</h3>
+    <p>특정한 클래스 속성을 가진 요소를 선택할 때</p>
+
+    <h1 class="item">클래스 테스트1</h1>
+    <h1 class="item select">클래스 테스트2</h1>
+    <h1 class="item select">클래스 테스트3</h1>
+
+    <script>
+        $(function(){
+            //기존 js 방식의 요소 선택
+            let itemArr = document.getElementsByClassName("item");
+            for(let i=0; i<itemArr.length; i++){
+                itemArr[i].style.color = "pink";
+            }
+
+            //jQuery 방식의 요소 선택
+            $('.select').css('backgroundColor','black');
+        });
+    </script>
+</body>
+</html>

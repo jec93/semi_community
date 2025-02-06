@@ -1,0 +1,526 @@
+:root{
+    --header: #43494c;
+    --bg-color:#43494c;
+    --color-text: #d3d3d3;
+    --color-bg-dropdown: #222;
+    --footer: #1d1d1d;
+    --instargram: #e4405f;
+    --discode: #5865f2;
+    --github: #333333;
+    --color-bg-main : #222;
+}
+@font-face {
+    font-family: ns-l;
+    src: url(/resources/resources/font/NotoSansKR-Light.ttf);
+}
+@font-face {
+    font-family: ns-r;
+    src: url(/resources/font/NotoSansKR-Regular.ttf);
+}
+@font-face {
+    font-family: ns-b;
+    src: url(/resources/font/NotoSansKR-Bold.ttf);
+}
+@font-face {
+    font-family: ns-black;
+    src: url(/resources/font/NotoSansKR-Black.ttf);
+}
+
+/* 공통 */
+* {
+    margin: 0;
+    padding: 0;
+    outline: 20;
+    font-family: ns-r;
+    list-style-type: none;
+}
+body{
+    margin: 0;
+    padding: 0; 
+    font-family: ns-r;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+section,
+header,
+footer {
+    flex-shrink: 0;
+}
+
+/*header*/
+.header {
+    background-color: var(--header);
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index:1;
+    height: 80px; /* 고정 높이 설정 */
+}
+
+.header > div {
+    padding: 10px;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    height: 100%; /* 고정된 높이 유지 */
+    flex-wrap: nowrap;
+}
+.navbar-nav .nav-menu,
+.titleAndcontents-search,
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%; /* 요소들의 높이를 고정된 헤더 높이에 맞춤 */
+}
+
+.titleAndcontents-search {
+    display: flex;
+    align-items: center;
+    background-color: #000; /* 배경색을 검정으로 설정 */
+    padding: 10px 15px; /* 위, 아래는 10px, 좌, 우는 15px의 패딩 */
+    border-radius: 8px; /* 둥근 모서리 */
+    flex-shrink: 0; /* 요소 위치 고정*/
+}
+
+.titleAndcontents-search input[type="search"] {
+    flex: 1; /* 가능한 공간을 차지 */
+    width: 300px; /* 원하는 너비 설정 */
+    max-width: 400px; /* 최대 너비 설정 */
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    outline: none;
+    font-size: 16px;
+}
+
+.titleAndcontents-search input[type="search"]::placeholder {
+    color: #ccc; /* placeholder 색상 */
+}
+
+.titleAndcontents-search button {
+    background-color: transparent; /* 배경 투명 */
+    border: none; /* 테두리 제거 */
+    color: #fff; /* 아이콘 색상 흰색 */
+    cursor: pointer; /* 커서 모양 손가락 */
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* 내부 여백 제거 */
+    margin-left: 10px; /* input과 버튼 사이의 간격 */
+    flex-wrap: nowrap;
+}
+
+#searchResults{
+	margin-top: 10px;
+	background-color: #f9f9f9; 
+	border: 1px solid #ddd; 
+	padding: 10px; 
+	display: none;
+}
+/* 검색 결과 컨테이너 */
+#searchResults {
+    margin-top: 5px;
+    background-color: var(--color-bg-dropdown); /* 드롭다운 배경 */
+    color: var(--color-text); /* 텍스트 색상 */
+    border: 1px solid #444; /* 드롭다운 테두리 */
+    padding: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+    position: absolute;
+    width: 300px;
+    display: none; /* 기본적으로 숨김 */
+    z-index: 10;
+}
+
+/* 검색 결과 리스트 */
+#searchResults ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* 검색 결과 항목 */
+#searchResults ul li {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* 검색 결과 항목 Hover */
+#searchResults ul li:hover {
+    background-color: #555; /* Hover 시 배경 */
+    color: #fff; /* Hover 시 텍스트 */
+}
+
+/* 검색 결과 메시지 (검색 결과 없음) */
+#searchResults div {
+    text-align: center;
+    padding: 12px;
+    font-size: 14px;
+    color: #888; /* 연한 텍스트 */
+}
+
+/* 검색 결과 링크 */
+#searchResults ul li a {
+    text-decoration: none;
+    color: var(--color-text); /* 기본 텍스트 색상 */
+    font-size: 14px;
+    display: block;
+}
+
+.navbar-nav .nav-menu{
+    display: flex;
+    gap: 10px;
+}
+.dropdown{
+    height: 20px;
+}
+
+.dropdown-menu {
+    border-color: var(--color-bd-outer);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+    border-radius: 3px;
+    background-color: var(--color-bg-dropdown);
+    text-align: center;
+}
+.dropdown-item{
+    color: var(--color-text);
+}
+.username div{
+    font-size: 14px;
+    color: var(--color-text);
+}
+.dropdown-bottom-line{
+    border-color: var(--color-bd-outer);
+    height: 0;
+    margin: .5rem 0;
+    overflow: hidden;
+    border-top: 1px solid #e9ecef;
+    border-top-color: rgb(233, 236, 239);
+}
+/* left-aside, index, right-aside 공통 */
+.main{
+    display: flex;
+    margin: 0px;
+    gap: 10px;
+}
+/* left-aside */
+.left-sidebar{
+    width: 320px;
+    min-width: 320px;
+    color: white;
+    justify-content: center;
+    text-align: center;
+}
+
+/* index 가운데 */
+.content{
+    width: 100%;
+    flex: 1;
+    background-color: gray;
+    display: flex;
+    min-width: 800px; /* 최대 너비 설정 */
+}
+.content {
+    display: flex;
+    flex-wrap: wrap;
+}
+.section {
+    width: 50%; /* 고정된 너비 */ /* 줄어들 수 있는 최소 너비 */
+    box-sizing: border-box;
+    
+}
+.member-title {
+    font-weight : bold;
+    padding: 30px;
+    text-align: center;
+    font-family: ns-b;
+    font-size: 40px;
+    color: white;
+}
+.page-title {
+    font-weight : bold;
+    padding: 30px;
+    text-align: center;
+    font-family: ns-b;
+    font-size: 20px;
+    color: white;
+}
+.page-title-a span{
+    padding-bottom: .25rem;
+    border-bottom: 2px solid darkcyan;
+}
+section.section {
+    background-color: var(--gray8);
+    white-space: nowrap;
+}
+.list-content{
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+.tbl {
+    width: 100%;
+    padding: 10px;
+}
+/*
+.tbl th,
+.tbl td {
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+}
+*/
+#tbl-header2{
+    width: 50%;
+}
+#tbl-header3{
+    width: 25%;
+}
+#tbl-header4{
+    width: 25%;
+}
+.tbl th{
+    font-size: 20px;
+}
+.tbl td{
+    font-size: 16px;
+    white-space: normal; /* 줄바꿈 허용 */
+    word-break: break-word; /* 긴 단어 줄바꿈 */
+    overflow: hidden;
+    text-overflow: ellipsis; /* 텍스트가 넘칠 때 '...' 표시 */
+}
+.tbl td a{
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 표시할 줄 수 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.tbl td a:hover{
+    text-decoration: underline;
+}
+.page-title-a:hover{
+    color: #5865f2;
+}
+.tbl th.left,
+.tbl td.left {
+  text-align: left;
+}
+.tbl th {
+  background-color: rgba(101, 146, 254, 0.2);
+}
+.tbl.tbl-hover tbody > tr:hover {
+  cursor: pointer;
+  background-color: rgba(101, 146, 254, 0.1);
+}
+.list-header{
+    text-align: right;
+    margin-bottom: 10px;
+}
+.list-header>a:hover{
+    text-decoration: underline;
+}
+.tbl-Num{
+    display: none;
+}
+.page-title-position{
+    display: flex;
+    justify-content: space-between;
+}
+.bottom-line{
+    border-color: var(--color-bd-outer);
+    width: 90%;
+    height: 0;
+    overflow: hidden;
+    border-top: 1px solid #e9ecef;
+    border-top-color: rgb(233, 236, 239);
+    margin: 0 auto; /* 가로 가운데 정렬 */
+}
+/* right aside*/
+.right-sidebar{
+    width: 320px;
+    min-width: 320px;
+    color: white;
+    justify-content: center;
+}
+
+/* 인기 검색어 */
+.search-rank{
+    background-color: gray;
+    width: 100%;
+    height: 110px;
+    border-radius: 6px;
+}
+.rank-bottom{
+    border-color: var(--color-bd-outer);
+    width: 90%;
+    height: 0;
+    overflow: hidden;
+    border-top: 1px solid #e9ecef;
+    border-top-color: rgb(233, 236, 239);
+    margin: 0 auto; /* 가로 가운데 정렬 */
+}
+
+.rank-text{
+    text-align: center;
+    font-size: 32px;
+}
+
+.rank-wrapper {
+    height: 44px; /* 한 개의 li 요소 높이 */
+    overflow: hidden;
+    position: relative;
+    padding-bottom: .5rem;
+    padding-left: 16px;
+    padding-right: 1.5rem;
+    padding-top: .5rem;
+    transition: height 0.3s ease;
+}
+.rank-box {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+}
+
+.rank-item {
+    height: 44px;
+    line-height: 44px;
+}
+
+.rank-item a {
+    display: block;
+    color: #ec9f19;
+    font-size: 20px;
+    text-align: left;
+}
+.keyword-rank-title{
+    color: white;
+}
+.search-rank .rank-item:last-child{
+    display: block;
+}
+.search-rank:hover{
+    height: 500px;
+}
+.search-rank:hover .rank-item:last-child {
+    display: none;
+}
+/*footer*/
+.footer{
+    background-color: #43494c;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    color: white;
+}
+.top{
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+.top .socials{
+    
+    border-radius: 50%;
+}
+.socials{
+    display: inline-flex;
+    list-style: none;
+}
+.white-line-logo{
+    height: 0;
+    margin: .5rem 0;
+    overflow: hidden;
+    border-bottom: 1px solid white;
+}
+.white-line-top{
+    width: 314px;
+    height: 0;
+    margin: .5rem 0;
+    overflow: hidden;
+    border-bottom: 1px solid white;
+}
+.mid{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+.mid a{
+    color: white;
+}
+.mid a:hover{
+    color: #5865f2;
+}
+.last-line{
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+.last-line p{
+    font-size: 12px;
+}
+.socials {
+    display: inline-flex;
+    list-style: none;
+}
+
+.socials .icon {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 50%;
+    padding: 15px;
+    margin: 10px;
+    width: 54px; /* Adjusted width */
+    height: 54px; /* Adjusted height */
+    box-sizing: border-box; /* Include padding within width and height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    /* Transition for smooth background change */
+    transition: background 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.socials a {
+    color: var(--color);
+    /* Transition for smooth color change */
+    transition: color 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.icons svg {
+    width: 24px;
+    height: 24px;
+    /* Center the SVG within the anchor */
+    display: block;
+}
+
+.oracle {
+    --color: #F80000;
+}
+
+.github {
+    --color: #000000;
+}
+
+.bootstrap {
+    --color: #712cf9;
+}
+
+/* Hover effects */
+.socials .icon:hover {
+    background: var(--color);
+}
+
+.socials .icon:hover a {
+    color: white;
+}

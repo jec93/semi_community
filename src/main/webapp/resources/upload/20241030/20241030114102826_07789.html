@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_개요</title>
+    <!-- 온라인
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    -->
+    <!--오프라인-->
+    <script src="html/resuorce/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <h1>JQuery</h1>
+    <p>
+        기존에 자바스크립트 언어로 구현하기에 복잡하고 길었던 구문들을 <br>
+        간편하게 사용할 수 있도록 단순화시킨 Javascript 기반의 라이브러리. <br><br>
+
+        Jquery 사용 시, 이점 <br>
+        1) DOM 요소와 관련된 스크립트를 보다 간결하게 구현할 수 있다. <br>
+        2) Ajax(비통기 통신), 이벤트 처리 등 다양하게 지원함.
+    </p>
+    <!-- jquery는 외부 라이브러리이기 때문에, ojdbc.jar처럼 가지고 와서 사용해야 한다.-->
+
+    <hr>
+
+    <h3>jQuery 라이브러리 연결 방법</h3>
+    <p>
+        1. 온라인 방식 : CDN(Content Delivery Network) <br>
+            - head 태그내에, script 태그를 작성하여 jquery가 작성되어있는 url과 연결하여 사용하는 방식 <br>
+            - 인터넷이 연결되어 있는 상태에서 사용 가능 <br><br>
+
+        2. 오프라인 방식 : Jquery 라이브러리를 다운로드 받아서 사용하는 방식
+            - Jquery 파일을 다운로드 받아, 적절한 폴더에 위치시키고, script 태그를 작성하여 jquery 파일이 위치한 경로를 지정하여 사용하는 방식 <br>
+
+    </p>
+
+    <h3>jQuery 구문 작성하기</h3>
+
+    <script>
+
+        //기존 JS 방식 : DOM 요소가 모두 로드되고 나면 실행할 이벤트 핸들러
+        window.onload = function(){
+            console.log('window onload 함수 실행!');
+        }
+
+        //js 방식은 나중에 작성된 핸들러만 실행된다.
+        window.onload = function(){
+            console.log('window onload 함수 실행! 2번');
+        }
+
+        //Jquery 방식 1)
+        jQuery(document).ready(function(){
+            console.log('jQuery(document).ready 함수 실행 !');
+        });
+
+        //Jquery 방식2)
+        $(document).ready(function(){
+            console.log('$(document).ready 함수 실행 !');
+        });
+
+        //Jquery 방식 3)
+        $(function(){
+            console.log('$(function(){}) 함수 실행!')
+
+            //기존 js방식으로 h3 태그에 접근하여, 스타일 지정
+            /*
+            let h3El = document.getElementsByTagName("h3"); //배열로 반환
+            for(let i=0; i<h3El.length; i++){
+                h3El[i].style.color = "red";
+            }
+                */
+
+            //jQuery 방식으로 h3 태그에 접근하여, 스타일 지정
+            $('h3').css('color', 'red');
+        });
+    </script>
+</body>
+</html>
